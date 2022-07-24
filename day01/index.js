@@ -1,6 +1,7 @@
 const R = require("ramda");
 const { tLog, readFileToString, S } = require("../lib");
 
+// Need to make these just depend on the offset... HOW???
 const makeSum = (str) => str.split("").reduce((acc, e, i, a) =>
   e === a[(i + 1) % a.length] ? acc + +e : acc
 , 0);
@@ -10,14 +11,8 @@ const makeSum2 = (str) => str.split("").reduce((acc, e, i, a) =>
 , 0);
 
 
-const solve_1 = R.pipe(
-  R.trim(),
-  makeSum,
-);
+const solve_1 = R.pipe(R.trim(), makeSum);
 
-const solve_2 = R.pipe(
-  R.trim(),
-  makeSum2,
-);
+const solve_2 = R.pipe(R.trim(), makeSum2);
 
 R.pipe(readFileToString, S(solve_1, solve_2), tLog)("data.txt");

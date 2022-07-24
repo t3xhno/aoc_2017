@@ -9,13 +9,7 @@ const getDivisions = (arr) => arr[0] / arr[1];
 const isWhole = (n) => n - Math.floor(n) === 0;
 const sortAscending = (arr) => [...arr].sort((a, b) => b - a);
 
-const solve_1 = R.pipe(
-  R.trim,
-  R.split(/\n/),
-  R.map(R.pipe(R.split(/\t/), R.map(n => +n))),
-  R.map(getDiffs),
-  R.sum,
-);
+const solve_1 = R.pipe(R.trim, R.split(/\n/), R.map(R.pipe(R.split(/\t/), R.map(n => +n))), R.map(getDiffs), R.sum);
 
 const solve_2 = R.pipe(
   R.trim,
